@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Neural Network: Line Through Origin</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+    <header>
+        <h1>Linear Regression: Line through Origin</h1>
+    </header>
+
+    <main>
+        <section class="network-wrapper" aria-label="Neural network visualization">
+            <svg id="network" viewBox="0 0 600 200" role="img" aria-label="One input node connected to one output node">
+                <!-- Input Node -->
+                <circle id="inputNode" class="node" cx="120" cy="100" r="40" />
+                <text x="120" y="105" text-anchor="middle" class="node-label">Input</text>
+
+                <!-- Output Node -->
+                <circle id="outputNode" class="node" cx="480" cy="100" r="40" />
+                <text x="480" y="105" text-anchor="middle" class="node-label">Output</text>
+
+                <!-- Connection Line -->
+                <line id="connection" x1="160" y1="100" x2="440" y2="100" class="edge" />
+
+                <!-- Animated Traveling Point -->
+                <circle id="traveler" class="traveler" cx="120" cy="100" r="10" visibility="hidden" />
+            </svg>
+            <!-- Button placed inside the panel for compact UI -->
+            <button id="sendBtn" class="panel-btn" type="button">Send a Signal</button>
+        </section>
+
+        
+
+        
+    </main>
+
+    <footer>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
