@@ -75,22 +75,50 @@
                         <circle id="input2" class="node" cx="120" cy="190" r="34" />
                         <text x="120" y="195" text-anchor="middle" class="node-label">Input 2</text>
 
-                        <!-- Output -->
-                        <circle id="outputMulti" class="node" cx="480" cy="120" r="46" />
-                        <text x="480" y="125" text-anchor="middle" class="node-label">Output</text>
+                        <!-- Output (moved a bit lower to avoid alignment overlap) -->
+                        <circle id="outputMulti" class="node" cx="480" cy="140" r="46" />
+                        <text x="480" y="145" text-anchor="middle" class="node-label">Output</text>
 
-                        <!-- Connections -->
-                        <line id="connBias" x1="152" y1="50" x2="432" y2="120" class="edge" />
-                        <line id="conn1" x1="154" y1="120" x2="432" y2="120" class="edge" />
-                        <line id="conn2" x1="154" y1="190" x2="432" y2="120" class="edge" />
+                        <!-- Connections (updated end y to match output) -->
+                        <line id="connBias" x1="152" y1="50" x2="432" y2="140" class="edge" />
+                        <line id="conn1" x1="154" y1="120" x2="432" y2="140" class="edge" />
+                        <line id="conn2" x1="154" y1="190" x2="432" y2="140" class="edge" />
 
                         <!-- Travelers -->
                         <circle id="travBias" class="traveler" cx="120" cy="50" r="8" visibility="hidden" />
                         <circle id="trav1" class="traveler" cx="120" cy="120" r="8" visibility="hidden" />
                         <circle id="trav2" class="traveler" cx="120" cy="190" r="8" visibility="hidden" />
-                        <circle id="travMergedMulti" class="traveler" cx="480" cy="120" r="12" visibility="hidden" />
+                        <circle id="travMergedMulti" class="traveler" cx="480" cy="140" r="12" visibility="hidden" />
                     </svg>
                     <button id="sendBtnMulti" class="panel-btn" type="button">Send a Signal</button>
+                </section>
+
+                <!-- Fourth visualization: Logistic Regression (bias + one input -> output, flash on activation) -->
+                <section class="network-wrapper" aria-label="Logistic regression visualization">
+                    <h2 class="panel-title">Logistic Regression</h2>
+                    <svg id="network-log" viewBox="0 0 600 180" role="img" aria-label="Bias and one input connected to one output">
+                        <!-- Bias (top, shaded) -->
+                        <circle id="logBias" class="node bias" cx="120" cy="50" r="32" />
+                        <text x="120" y="55" text-anchor="middle" class="node-label">Bias</text>
+
+                        <!-- Input (middle) - moved down to avoid overlap -->
+                        <circle id="logInput" class="node" cx="120" cy="130" r="36" />
+                        <text x="120" y="135" text-anchor="middle" class="node-label">Input</text>
+
+                        <!-- Output (right) -->
+                        <circle id="logOutput" class="node" cx="480" cy="80" r="44" />
+                        <text x="480" y="85" text-anchor="middle" class="node-label">Output</text>
+
+                        <!-- Connections -->
+                        <line id="logConnBias" x1="152" y1="50" x2="436" y2="80" class="edge" />
+                        <line id="logConnIn" x1="156" y1="130" x2="436" y2="80" class="edge" />
+
+                        <!-- Travelers -->
+                        <circle id="travLogBias" class="traveler" cx="120" cy="50" r="8" visibility="hidden" />
+                        <circle id="travLogIn" class="traveler" cx="120" cy="130" r="8" visibility="hidden" />
+                        <circle id="travLogMerged" class="traveler" cx="480" cy="80" r="12" visibility="hidden" />
+                    </svg>
+                    <button id="sendBtnLog" class="panel-btn" type="button">Send a Signal</button>
                 </section>
     </main>
 
@@ -99,6 +127,7 @@
 
     <script src="any_line.js"></script>
     <script src="multiple_regression.js"></script>
+    <script src="logistic_regression.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -89,6 +89,16 @@ svg { width: 100%; height: auto; display: block; }
   stroke: var(--accent);
 }
 
+/* Flash animation used to indicate activation (e.g. logistic output) */
+@keyframes node-flash {
+  0% { fill: var(--node-fill); fill-opacity: 1; stroke: var(--node-stroke); }
+  40% { fill: var(--accent); fill-opacity: 0.95; stroke: var(--accent); }
+  100% { fill: var(--node-fill); fill-opacity: 1; stroke: var(--node-stroke); }
+}
+.node.flash {
+  animation: node-flash 480ms ease-in-out 2;
+}
+
 .legend { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; color: var(--muted); }
 .swatch { width: 18px; height: 18px; border-radius: 4px; border: 2px solid var(--border); }
 .edge-swatch { background: linear-gradient(90deg,var(--edge), var(--accent-soft)); }
