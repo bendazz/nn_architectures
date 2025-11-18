@@ -154,6 +154,87 @@
                     </svg>
                     <button id="sendBtnLog2" class="panel-btn" type="button">Send a Signal</button>
                 </section>
+
+                <!-- Sixth visualization: Logistic Regression: Hidden Layer -->
+                <section class="network-wrapper" aria-label="Logistic regression with hidden layer">
+                    <h2 class="panel-title">Logistic Regression: Hidden Layer</h2>
+                    <svg id="network-hidden" viewBox="0 0 800 260" role="img" aria-label="Inputs, hidden layer (with bias), and output">
+                        <!-- Left side: bias + two inputs -->
+                        <circle id="hidden_left_bias" class="node bias" cx="100" cy="50" r="28" />
+                        <text x="100" y="54" text-anchor="middle" class="node-label">Bias</text>
+                        <circle id="hidden_left_in1" class="node" cx="100" cy="120" r="30" />
+                        <text x="100" y="124" text-anchor="middle" class="node-label">Input 1</text>
+                        <circle id="hidden_left_in2" class="node" cx="100" cy="190" r="30" />
+                        <text x="100" y="194" text-anchor="middle" class="node-label">Input 2</text>
+
+                        <!-- Hidden layer (bias at top, three non-bias nodes below) -->
+                        <circle id="hidden_bias" class="node bias" cx="360" cy="40" r="26" />
+                        <text x="360" y="44" text-anchor="middle" class="node-label">Bias</text>
+
+                        <circle id="hidden_h1" class="node" cx="360" cy="100" r="28" />
+                        <text x="360" y="104" text-anchor="middle" class="node-label">H1</text>
+                        <circle id="hidden_h2" class="node" cx="360" cy="150" r="28" />
+                        <text x="360" y="154" text-anchor="middle" class="node-label">H2</text>
+                        <circle id="hidden_h3" class="node" cx="360" cy="200" r="28" />
+                        <text x="360" y="204" text-anchor="middle" class="node-label">H3</text>
+
+                        <!-- Output on the right -->
+                        <circle id="hidden_output" class="node" cx="660" cy="130" r="44" />
+                        <text x="660" y="135" text-anchor="middle" class="node-label">Output</text>
+
+                        <!-- Connections: left -> hidden (fully connected: each left node -> each hidden node) -->
+                        <!-- Bias (left) to H1,H2,H3 -->
+                        <line class="edge" x1="128" y1="50" x2="332" y2="100" />
+                        <line class="edge" x1="128" y1="50" x2="332" y2="150" />
+                        <line class="edge" x1="128" y1="50" x2="332" y2="200" />
+                        <!-- Input1 (left) to H1,H2,H3 -->
+                        <line class="edge" x1="130" y1="120" x2="332" y2="100" />
+                        <line class="edge" x1="130" y1="120" x2="332" y2="150" />
+                        <line class="edge" x1="130" y1="120" x2="332" y2="200" />
+                        <!-- Input2 (left) to H1,H2,H3 -->
+                        <line class="edge" x1="130" y1="190" x2="332" y2="100" />
+                        <line class="edge" x1="130" y1="190" x2="332" y2="150" />
+                        <line class="edge" x1="130" y1="190" x2="332" y2="200" />
+
+                        <!-- Hidden -> output connections -->
+                        <line class="edge" x1="388" y1="100" x2="616" y2="130" />
+                        <line class="edge" x1="388" y1="150" x2="616" y2="130" />
+                        <line class="edge" x1="388" y1="200" x2="616" y2="130" />
+                        <line class="edge" x1="388" y1="40" x2="616" y2="130" />
+
+                        <!-- Travelers: left side travelers that go to hidden H1/H2/H3 -->
+                        <circle id="trav_left_bias" class="traveler" cx="100" cy="50" r="7" visibility="hidden" />
+                        <circle id="trav_left_1" class="traveler" cx="100" cy="120" r="7" visibility="hidden" />
+                        <circle id="trav_left_2" class="traveler" cx="100" cy="190" r="7" visibility="hidden" />
+
+                        <!-- Per-edge travelers: each input splits into three travelers (to H1,H2,H3) -->
+                        <!-- From left bias -->
+                        <circle id="trav_lb_h1" class="traveler" cx="100" cy="50" r="6" visibility="hidden" />
+                        <circle id="trav_lb_h2" class="traveler" cx="100" cy="50" r="6" visibility="hidden" />
+                        <circle id="trav_lb_h3" class="traveler" cx="100" cy="50" r="6" visibility="hidden" />
+                        <!-- From left input1 -->
+                        <circle id="trav_l1_h1" class="traveler" cx="100" cy="120" r="6" visibility="hidden" />
+                        <circle id="trav_l1_h2" class="traveler" cx="100" cy="120" r="6" visibility="hidden" />
+                        <circle id="trav_l1_h3" class="traveler" cx="100" cy="120" r="6" visibility="hidden" />
+                        <!-- From left input2 -->
+                        <circle id="trav_l2_h1" class="traveler" cx="100" cy="190" r="6" visibility="hidden" />
+                        <circle id="trav_l2_h2" class="traveler" cx="100" cy="190" r="6" visibility="hidden" />
+                        <circle id="trav_l2_h3" class="traveler" cx="100" cy="190" r="6" visibility="hidden" />
+
+                        <!-- traveler coming from top into hidden bias during flash -->
+                        <circle id="trav_top_to_hbias" class="traveler" cx="360" cy="-20" r="7" visibility="hidden" />
+
+                        <!-- hidden-layer travelers that move together to output -->
+                        <circle id="trav_h1" class="traveler" cx="360" cy="100" r="8" visibility="hidden" />
+                        <circle id="trav_h2" class="traveler" cx="360" cy="150" r="8" visibility="hidden" />
+                        <circle id="trav_h3" class="traveler" cx="360" cy="200" r="8" visibility="hidden" />
+                        <circle id="trav_hbias" class="traveler" cx="360" cy="40" r="8" visibility="hidden" />
+
+                        <!-- merged traveler at output -->
+                        <circle id="trav_hidden_merged" class="traveler" cx="660" cy="130" r="12" visibility="hidden" />
+                    </svg>
+                    <button id="sendBtnHidden" class="panel-btn" type="button">Send a Signal</button>
+                </section>
     </main>
 
     <footer>
@@ -163,6 +244,7 @@
     <script src="multiple_regression.js"></script>
     <script src="logistic_regression.js"></script>
     <script src="logistic_two_features.js"></script>
+    <script src="logistic_hidden.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
