@@ -120,6 +120,40 @@
                     </svg>
                     <button id="sendBtnLog" class="panel-btn" type="button">Send a Signal</button>
                 </section>
+
+                <!-- Fifth visualization: Logistic Regression: Two Features (bias + two inputs -> output) -->
+                <section class="network-wrapper" aria-label="Logistic regression (two features)">
+                    <h2 class="panel-title">Logistic Regression: Two Features</h2>
+                    <svg id="network-log2" viewBox="0 0 600 220" role="img" aria-label="Bias and two inputs connected to one output">
+                        <!-- Bias (top, shaded) -->
+                        <circle id="log2Bias" class="node bias" cx="120" cy="50" r="32" />
+                        <text x="120" y="55" text-anchor="middle" class="node-label">Bias</text>
+
+                        <!-- Input 1 (upper middle) -->
+                        <circle id="log2Input1" class="node" cx="120" cy="110" r="34" />
+                        <text x="120" y="115" text-anchor="middle" class="node-label">Input 1</text>
+
+                        <!-- Input 2 (lower middle) -->
+                        <circle id="log2Input2" class="node" cx="120" cy="170" r="34" />
+                        <text x="120" y="175" text-anchor="middle" class="node-label">Input 2</text>
+
+                        <!-- Output (right center) -->
+                        <circle id="log2Output" class="node" cx="480" cy="110" r="44" />
+                        <text x="480" y="115" text-anchor="middle" class="node-label">Output</text>
+
+                        <!-- Connections -->
+                        <line id="log2ConnBias" x1="152" y1="50" x2="436" y2="110" class="edge" />
+                        <line id="log2Conn1" x1="154" y1="110" x2="436" y2="110" class="edge" />
+                        <line id="log2Conn2" x1="154" y1="170" x2="436" y2="110" class="edge" />
+
+                        <!-- Travelers -->
+                        <circle id="travLog2Bias" class="traveler" cx="120" cy="50" r="8" visibility="hidden" />
+                        <circle id="travLog2In1" class="traveler" cx="120" cy="110" r="8" visibility="hidden" />
+                        <circle id="travLog2In2" class="traveler" cx="120" cy="170" r="8" visibility="hidden" />
+                        <circle id="travLog2Merged" class="traveler" cx="480" cy="110" r="12" visibility="hidden" />
+                    </svg>
+                    <button id="sendBtnLog2" class="panel-btn" type="button">Send a Signal</button>
+                </section>
     </main>
 
     <footer>
@@ -128,6 +162,7 @@
     <script src="any_line.js"></script>
     <script src="multiple_regression.js"></script>
     <script src="logistic_regression.js"></script>
+    <script src="logistic_two_features.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

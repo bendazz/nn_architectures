@@ -15,6 +15,8 @@ Additional visualizations:
  - `multiple_regression.js` – Animation for the multiple regression visualization (bias + two inputs → one output).
  - `multiple_regression.js` – Animation for the multiple regression visualization (bias + two inputs → one output).
  - `logistic_regression.js` – Animation for the logistic regression visualization (bias + one input → output; flashes on activation).
+ - `logistic_regression.js` – Animation for the logistic regression visualization (bias + one input → output; flashes on activation).
+ - `logistic_two_features.js` – Animation for logistic regression with two features (bias + two inputs → output; flashes on activation).
 
 ### How to View
 Open `index.html` directly in a modern browser:
