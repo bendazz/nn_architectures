@@ -8,6 +8,12 @@ This project starts with the most minimal neural network idea: one input node, o
 - `styles.css` – Light theme styling and layout.
 - `script.js` – Animation logic for a "signal" traveling from input to output.
 
+Additional visualizations:
+- `any_line.html` – Two-input single-output visualization: two signals enter and merge into one output ("Any Line").
+- `any_line.js` – Animation for the two-input visualization.
+ - `any_line.js` – Animation for the two-input visualization.
+ - `multiple_regression.js` – Animation for the multiple regression visualization (bias + two inputs → one output).
+
 ### How to View
 Open `index.html` directly in a modern browser:
 

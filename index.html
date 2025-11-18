@@ -7,12 +7,11 @@
     <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-    <header>
-        <h1>Linear Regression: Line through Origin</h1>
-    </header>
+    <!-- top header removed; panel titles are shown inside each visualization panel -->
 
     <main>
         <section class="network-wrapper" aria-label="Neural network visualization">
+            <h2 class="panel-title">Linear Regression: Line through Origin</h2>
             <svg id="network" viewBox="0 0 600 200" role="img" aria-label="One input node connected to one output node">
                 <!-- Input Node -->
                 <circle id="inputNode" class="node" cx="120" cy="100" r="40" />
@@ -31,15 +30,75 @@
             <!-- Button placed inside the panel for compact UI -->
             <button id="sendBtn" class="panel-btn" type="button">Send a Signal</button>
         </section>
-
         
+                <!-- Second visualization: Any Line (two inputs -> one output) -->
+                <section class="network-wrapper" aria-label="Two-input network visualization">
+                    <h2 class="panel-title">Linear Regression: Any Line</h2>
+                    <svg id="network-any" viewBox="0 0 600 240" role="img" aria-label="Two inputs connected to one output">
+                        <!-- Input A (top) --><!-- bias node -->
+                        <circle id="inputA" class="node bias" cx="120" cy="70" r="36" />
+                        <text x="120" y="75" text-anchor="middle" class="node-label">Bias</text>
 
-        
+                        <!-- Input B (bottom) -->
+                        <circle id="inputB" class="node" cx="120" cy="170" r="36" />
+                        <text x="120" y="175" text-anchor="middle" class="node-label">Input 1</text>
+
+                        <!-- Output (right center) -->
+                        <circle id="outputAny" class="node" cx="480" cy="120" r="44" />
+                        <text x="480" y="125" text-anchor="middle" class="node-label">Output</text>
+
+                        <!-- Connections -->
+                        <line id="connA" x1="156" y1="70" x2="436" y2="120" class="edge" />
+                        <line id="connB" x1="156" y1="170" x2="436" y2="120" class="edge" />
+
+                        <!-- Travelers -->
+                        <circle id="travA" class="traveler" cx="120" cy="70" r="8" visibility="hidden" />
+                        <circle id="travB" class="traveler" cx="120" cy="170" r="8" visibility="hidden" />
+                        <circle id="travMerged" class="traveler" cx="480" cy="120" r="10" visibility="hidden" />
+                    </svg>
+                    <button id="sendBtnAny" class="panel-btn" type="button">Send a Signal</button>
+                </section>
+
+                <!-- Third visualization: Multiple Regression (bias + two inputs -> one output) -->
+                <section class="network-wrapper" aria-label="Multiple regression visualization">
+                    <h2 class="panel-title">Multiple Regression</h2>
+                    <svg id="network-multi" viewBox="0 0 600 260" role="img" aria-label="Bias and two inputs connected to one output">
+                        <!-- Bias (top, shaded) -->
+                        <circle id="biasNode" class="node bias" cx="120" cy="50" r="32" />
+                        <text x="120" y="55" text-anchor="middle" class="node-label">Bias</text>
+
+                        <!-- Input 1 (upper middle) -->
+                        <circle id="input1" class="node" cx="120" cy="120" r="34" />
+                        <text x="120" y="125" text-anchor="middle" class="node-label">Input 1</text>
+
+                        <!-- Input 2 (lower middle) -->
+                        <circle id="input2" class="node" cx="120" cy="190" r="34" />
+                        <text x="120" y="195" text-anchor="middle" class="node-label">Input 2</text>
+
+                        <!-- Output -->
+                        <circle id="outputMulti" class="node" cx="480" cy="120" r="46" />
+                        <text x="480" y="125" text-anchor="middle" class="node-label">Output</text>
+
+                        <!-- Connections -->
+                        <line id="connBias" x1="152" y1="50" x2="432" y2="120" class="edge" />
+                        <line id="conn1" x1="154" y1="120" x2="432" y2="120" class="edge" />
+                        <line id="conn2" x1="154" y1="190" x2="432" y2="120" class="edge" />
+
+                        <!-- Travelers -->
+                        <circle id="travBias" class="traveler" cx="120" cy="50" r="8" visibility="hidden" />
+                        <circle id="trav1" class="traveler" cx="120" cy="120" r="8" visibility="hidden" />
+                        <circle id="trav2" class="traveler" cx="120" cy="190" r="8" visibility="hidden" />
+                        <circle id="travMergedMulti" class="traveler" cx="480" cy="120" r="12" visibility="hidden" />
+                    </svg>
+                    <button id="sendBtnMulti" class="panel-btn" type="button">Send a Signal</button>
+                </section>
     </main>
 
     <footer>
     </footer>
 
+    <script src="any_line.js"></script>
+    <script src="multiple_regression.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

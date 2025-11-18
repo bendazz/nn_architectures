@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Linear Regression: Any Line</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <h1>Linear Regression: Any Line</h1>
+  </header>
+
+  <main>
+    <section class="network-wrapper" aria-label="Two-input network visualization">
+
+      <svg id="network-any" viewBox="0 0 600 240" role="img" aria-label="Two inputs connected to one output">
+        <!-- Input A (top) -->
+        <circle id="inputA" class="node bias" cx="120" cy="70" r="36" />
+        <text x="120" y="75" text-anchor="middle" class="node-label">Bias</text>
+
+        <!-- Input B (bottom) -->
+        <circle id="inputB" class="node" cx="120" cy="170" r="36" />
+        <text x="120" y="175" text-anchor="middle" class="node-label">Input 1</text>
+
+        <!-- Output (right center) -->
+        <circle id="outputAny" class="node" cx="480" cy="120" r="44" />
+        <text x="480" y="125" text-anchor="middle" class="node-label">Output</text>
+
+        <!-- Connections -->
+        <line id="connA" x1="156" y1="70" x2="436" y2="120" class="edge" />
+        <line id="connB" x1="156" y1="170" x2="436" y2="120" class="edge" />
+
+        <!-- Travelers -->
+        <circle id="travA" class="traveler" cx="120" cy="70" r="8" visibility="hidden" />
+        <circle id="travB" class="traveler" cx="120" cy="170" r="8" visibility="hidden" />
+        <circle id="travMerged" class="traveler" cx="480" cy="120" r="10" visibility="hidden" />
+      </svg>
+
+      <button id="sendBtnAny" class="panel-btn" type="button">Send a Signal</button>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="any_line.js"></script>
+</body>
+</html>
