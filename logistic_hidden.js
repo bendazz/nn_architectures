@@ -126,7 +126,11 @@
         let completedApproaches = 0;
         function approachDone(){
             completedApproaches++;
-            if(completedApproaches === 3) afterApproach();
+            if(completedApproaches === 3) {
+                // hide base left travelers immediately when all approaches complete
+                hide(travLeftBias); hide(travLeft1); hide(travLeft2);
+                afterApproach();
+            }
         }
 
         animateMove(travLeftBias, {x:startX,y:lb.y}, lb, approachDur, approachDone);
@@ -136,6 +140,9 @@
         // After initial pause, send travelers to their respective hidden targets
         function afterApproach(){
             setTimeout(()=>{
+                // hide the base left travelers (they split into per-edge travelers)
+                hide(travLeftBias); hide(travLeft1); hide(travLeft2);
+
                 // move to hidden nodes along the edges (fully connected). Each left input splits into three per-edge travelers.
                 let arrivalsH1 = 0, arrivalsH2 = 0, arrivalsH3 = 0;
                 function perEdgeArrived(target){
@@ -165,6 +172,14 @@
                                 const fromHB = getCenter(hBias);
                                 const from1 = getCenter(h1);
                                 const from2 = getCenter(h2);
+
+    // final cleanup in case any travelers remain visible between runs
+    function finalCleanup(){
+        [travLeftBias, travLeft1, travLeft2, travHBias, travH1, travH2, travH3, travHiddenMerged, travTopToHBias].forEach(hide);
+    }
+
+    // ensure cleanup after runs (a generous timeout covers the longest animations)
+    setInterval(finalCleanup, 3000);
                                 const from3 = getCenter(h3);
 
                                 animateMove(travHBias, fromHB, out, hiddenToOutputDur, ()=>{});

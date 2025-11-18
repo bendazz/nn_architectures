@@ -235,6 +235,142 @@
                     </svg>
                     <button id="sendBtnHidden" class="panel-btn" type="button">Send a Signal</button>
                 </section>
+
+                <!-- Seventh visualization: Logistic Regression: Two Hidden Layers -->
+                <section class="network-wrapper" aria-label="Logistic regression with two hidden layers">
+                    <h2 class="panel-title">Logistic Regression: Two Hidden Layers</h2>
+                    <svg id="network-hidden2" viewBox="0 0 980 320" role="img" aria-label="Inputs, two hidden layers, and output">
+                        <!-- Left side: bias + two inputs -->
+                        <circle id="h2_left_bias" class="node bias" cx="100" cy="50" r="28" />
+                        <text x="100" y="54" text-anchor="middle" class="node-label">Bias</text>
+                        <circle id="h2_left_in1" class="node" cx="100" cy="140" r="30" />
+                        <text x="100" y="144" text-anchor="middle" class="node-label">Input 1</text>
+                        <circle id="h2_left_in2" class="node" cx="100" cy="230" r="30" />
+                        <text x="100" y="234" text-anchor="middle" class="node-label">Input 2</text>
+
+                        <!-- Hidden layer 1 (bias at top, three non-bias nodes) -->
+                        <circle id="h2_layer1_bias" class="node bias" cx="360" cy="40" r="26" />
+                        <text x="360" y="44" text-anchor="middle" class="node-label">Bias L1</text>
+
+                        <circle id="h2_l1_n1" class="node" cx="360" cy="110" r="28" />
+                        <text x="360" y="114" text-anchor="middle" class="node-label">L1-1</text>
+                        <circle id="h2_l1_n2" class="node" cx="360" cy="170" r="28" />
+                        <text x="360" y="174" text-anchor="middle" class="node-label">L1-2</text>
+                        <circle id="h2_l1_n3" class="node" cx="360" cy="230" r="28" />
+                        <text x="360" y="234" text-anchor="middle" class="node-label">L1-3</text>
+
+                        <!-- Hidden layer 2 (bias at top, three non-bias nodes) -->
+                        <circle id="h2_layer2_bias" class="node bias" cx="620" cy="40" r="26" />
+                        <text x="620" y="44" text-anchor="middle" class="node-label">Bias L2</text>
+
+                        <circle id="h2_l2_n1" class="node" cx="620" cy="100" r="28" />
+                        <text x="620" y="104" text-anchor="middle" class="node-label">L2-1</text>
+                        <circle id="h2_l2_n2" class="node" cx="620" cy="160" r="28" />
+                        <text x="620" y="164" text-anchor="middle" class="node-label">L2-2</text>
+                        <circle id="h2_l2_n3" class="node" cx="620" cy="220" r="28" />
+                        <text x="620" y="224" text-anchor="middle" class="node-label">L2-3</text>
+
+                        <!-- Output on the right -->
+                        <circle id="h2_output" class="node" cx="880" cy="140" r="44" />
+                        <text x="880" y="145" text-anchor="middle" class="node-label">Output</text>
+
+                        <!-- Connections: left -> layer1 (fully connected: 9 lines) -->
+                        <!-- Left bias to L1 nodes -->
+                        <line class="edge" x1="128" y1="50" x2="332" y2="110" />
+                        <line class="edge" x1="128" y1="50" x2="332" y2="170" />
+                        <line class="edge" x1="128" y1="50" x2="332" y2="230" />
+                        <!-- Left input1 to L1 nodes -->
+                        <line class="edge" x1="130" y1="140" x2="332" y2="110" />
+                        <line class="edge" x1="130" y1="140" x2="332" y2="170" />
+                        <line class="edge" x1="130" y1="140" x2="332" y2="230" />
+                        <!-- Left input2 to L1 nodes -->
+                        <line class="edge" x1="130" y1="230" x2="332" y2="110" />
+                        <line class="edge" x1="130" y1="230" x2="332" y2="170" />
+                        <line class="edge" x1="130" y1="230" x2="332" y2="230" />
+
+                        <!-- Connections: layer1 -> layer2 (fully connected: 9 lines) -->
+                        <!-- L1-1 to L2 -->
+                        <line class="edge" x1="388" y1="110" x2="592" y2="100" />
+                        <line class="edge" x1="388" y1="110" x2="592" y2="160" />
+                        <line class="edge" x1="388" y1="110" x2="592" y2="220" />
+                        <!-- L1-2 to L2 -->
+                        <line class="edge" x1="388" y1="170" x2="592" y2="100" />
+                        <line class="edge" x1="388" y1="170" x2="592" y2="160" />
+                        <line class="edge" x1="388" y1="170" x2="592" y2="220" />
+                        <!-- L1-3 to L2 -->
+                        <line class="edge" x1="388" y1="230" x2="592" y2="100" />
+                        <line class="edge" x1="388" y1="230" x2="592" y2="160" />
+                        <line class="edge" x1="388" y1="230" x2="592" y2="220" />
+
+                        <!-- Bias L1 -> L2 connections (bias in layer1 should connect to layer2 nodes) -->
+                        <line class="edge" x1="388" y1="40" x2="592" y2="100" />
+                        <line class="edge" x1="388" y1="40" x2="592" y2="160" />
+                        <line class="edge" x1="388" y1="40" x2="592" y2="220" />
+
+                        <!-- Connections: layer2 -> output (plus bias to output) -->
+                        <line class="edge" x1="648" y1="100" x2="836" y2="140" />
+                        <line class="edge" x1="648" y1="160" x2="836" y2="140" />
+                        <line class="edge" x1="648" y1="220" x2="836" y2="140" />
+                        <line class="edge" x1="648" y1="40" x2="836" y2="140" />
+
+                        <!-- Travelers: left-side base travelers (appear at inputs) -->
+                        <circle id="h2_trav_left_bias" class="traveler" cx="100" cy="50" r="7" visibility="hidden" />
+                        <circle id="h2_trav_left_1" class="traveler" cx="100" cy="140" r="7" visibility="hidden" />
+                        <circle id="h2_trav_left_2" class="traveler" cx="100" cy="230" r="7" visibility="hidden" />
+
+                        <!-- Per-edge travelers left->L1 (9) -->
+                        <circle id="h2_trav_lb_l1_1" class="traveler" cx="100" cy="50" r="6" visibility="hidden" />
+                        <circle id="h2_trav_lb_l1_2" class="traveler" cx="100" cy="50" r="6" visibility="hidden" />
+                        <circle id="h2_trav_lb_l1_3" class="traveler" cx="100" cy="50" r="6" visibility="hidden" />
+
+                        <circle id="h2_trav_l1_l1_1" class="traveler" cx="100" cy="140" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1_l1_2" class="traveler" cx="100" cy="140" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1_l1_3" class="traveler" cx="100" cy="140" r="6" visibility="hidden" />
+
+                        <circle id="h2_trav_l2_l1_1" class="traveler" cx="100" cy="230" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l2_l1_2" class="traveler" cx="100" cy="230" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l2_l1_3" class="traveler" cx="100" cy="230" r="6" visibility="hidden" />
+
+                        <!-- Merged travelers shown at layer1 nodes when they have all contributions -->
+                        <circle id="h2_trav_l1_n1_merged" class="traveler" cx="360" cy="110" r="8" visibility="hidden" />
+                        <circle id="h2_trav_l1_n2_merged" class="traveler" cx="360" cy="170" r="8" visibility="hidden" />
+                        <circle id="h2_trav_l1_n3_merged" class="traveler" cx="360" cy="230" r="8" visibility="hidden" />
+
+                        <!-- Per-edge travelers layer1->layer2 (9) -->
+                        <circle id="h2_trav_l1n1_l2n1" class="traveler" cx="360" cy="110" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1n1_l2n2" class="traveler" cx="360" cy="110" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1n1_l2n3" class="traveler" cx="360" cy="110" r="6" visibility="hidden" />
+
+                        <circle id="h2_trav_l1n2_l2n1" class="traveler" cx="360" cy="170" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1n2_l2n2" class="traveler" cx="360" cy="170" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1n2_l2n3" class="traveler" cx="360" cy="170" r="6" visibility="hidden" />
+
+                        <circle id="h2_trav_l1n3_l2n1" class="traveler" cx="360" cy="230" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1n3_l2n2" class="traveler" cx="360" cy="230" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1n3_l2n3" class="traveler" cx="360" cy="230" r="6" visibility="hidden" />
+
+                        <!-- Per-edge travelers from layer1 bias to layer2 nodes (3) -->
+                        <circle id="h2_trav_l1bias_l2n1" class="traveler" cx="360" cy="40" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1bias_l2n2" class="traveler" cx="360" cy="40" r="6" visibility="hidden" />
+                        <circle id="h2_trav_l1bias_l2n3" class="traveler" cx="360" cy="40" r="6" visibility="hidden" />
+
+                        <!-- Merged travelers shown at layer2 nodes when they have all contributions -->
+                        <circle id="h2_trav_l2_n1_merged" class="traveler" cx="620" cy="100" r="10" visibility="hidden" />
+                        <circle id="h2_trav_l2_n2_merged" class="traveler" cx="620" cy="160" r="10" visibility="hidden" />
+                        <circle id="h2_trav_l2_n3_merged" class="traveler" cx="620" cy="220" r="10" visibility="hidden" />
+
+                        <!-- Travelers for biases from top into hidden biases during flash -->
+                        <circle id="h2_trav_top_l1_bias" class="traveler" cx="360" cy="-24" r="7" visibility="hidden" />
+                        <circle id="h2_trav_top_l2_bias" class="traveler" cx="620" cy="-24" r="7" visibility="hidden" />
+
+                        <!-- traveler that moves from layer2 bias to output (visible during final leg) -->
+                        <circle id="h2_trav_l2_bias" class="traveler" cx="620" cy="40" r="8" visibility="hidden" />
+
+                        <!-- merged final traveler at output -->
+                        <circle id="h2_trav_final_merged" class="traveler" cx="880" cy="140" r="12" visibility="hidden" />
+                    </svg>
+                    <button id="sendBtnHidden2" class="panel-btn" type="button">Send a Signal</button>
+                </section>
     </main>
 
     <footer>
@@ -245,6 +381,7 @@
     <script src="logistic_regression.js"></script>
     <script src="logistic_two_features.js"></script>
     <script src="logistic_hidden.js"></script>
+    <script src="logistic_hidden_two_layers.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
